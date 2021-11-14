@@ -1,0 +1,66 @@
+<section class="py-4">
+  <div class="container">
+    <div class="alert alert-danger"
+    *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+     <div class="d-flex align-items-center justify-content-center"
+          *ngIf='isLoading'>
+        <app-loading-spinnner></app-loading-spinnner>
+      </div>
+    <div class="row d-flex align-items-center justify-content-center">
+      <div style="max-width: 420px">
+        <form
+        class="bg-white border py-4 px-5"
+         method="get"
+         #signupForm="ngForm"
+         (ngSubmit)="onSubmit(signupForm)"
+         *ngIf="!isLoading"
+         >
+          <div class="form-floating mb-3">
+            <input
+              class="form-control"
+              name="email"
+              placeholder="Email"
+              required
+              type="email"
+              ngModel
+              email
+            /><label>Email</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              class="form-control"
+              name="password"
+              placeholder="Password"
+              required
+              type="password"
+              ngModel
+              minlength="6"
+            /><label>Password</label>
+          </div>
+          <div class="mb-2">
+            <button
+              class="btn btn-primary fw-bold w-100 bg-gradient"
+              href="#"
+              type="submit"
+              [disabled]="!signupForm.valid"
+            >
+              Sign Up
+            </button>
+          </div>
+          <div class="small text-center">
+            By signing up, you agree to our Terms , Data Policy and Cookies
+            Policy.
+          </div>
+          <p class="my-3 text-center or">OR</p>
+        </form>
+        <div class="bg-white py-4 px-5 text-center border mt-4"
+        *ngIf="!isLoading">
+          <p class="m-0">Have an account? <a routerLink="">Log In</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
